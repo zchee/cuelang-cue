@@ -1,11 +1,9 @@
-# This is an example goreleaser.yaml file with some sane defaults.
-# Make sure to check the documentation at http://goreleaser.com
+project_name: cue
+
 before:
   hooks:
     - go mod download
-    # you may remove this if you don't need go generate
-    - go generate ./...
-    - go fmt ./...
+
 builds:
 - env:
   - CGO_ENABLED=0
@@ -43,6 +41,9 @@ archives:
     - goos: windows
       format: zip
 
+release:
+  disable: false
+
 checksum:
   name_template: 'checksums.txt'
 
@@ -55,14 +56,14 @@ changelog:
     exclude:
     - '^test:'
 
-brews:
-- github:
-    owner: cuelang
-    name: homebrew-tap
-  commit_author:
-    name: cue-bot
-    email: noreply@cuelang.org
-  homepage: "https://github.com/cuelang/cue"
-  description: "CUE is an open source data constraint language which aims to simplify tasks involving defining and using data."
-  test: |
-    system "#{bin}/cue version"
+# brews:
+# - github:
+#     owner: cuelang
+#     name: homebrew-tap
+#   commit_author:
+#     name: cue-bot
+#     email: noreply@cuelang.org
+#   homepage: "https://github.com/cuelang/cue"
+#   description: "CUE is an open source data constraint language which aims to simplify tasks involving defining and using data."
+#   test: |
+#     system "#{bin}/cue version"
