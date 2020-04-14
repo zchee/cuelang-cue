@@ -42,7 +42,7 @@ jobs:
           GOLANG_VERSION: 1.14
           CUE_VERSION: ${{ env.CUE_VERSION }}
         with:
-          repository: cuelang/cue
+          repository: zchee/cue
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           tags: ${{ env.CUE_VERSION }},latest
